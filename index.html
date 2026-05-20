@@ -1,221 +1,379 @@
-<!DOCTYPE html><html lang="ar" dir="rtl">
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>دار العطور</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Cairo', sans-serif;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    body {
-      background: #050505;
-      color: white;
-      overflow-x: hidden;
-    }
+<title>دار العطور | حضور لا يُنسى</title>
 
-    .banner {
-      width: 100%;
-      height: 340px;
-      background: linear-gradient(rgba(0,0,0,.45), rgba(0,0,0,.8)), url('banner.png');
-      background-size: cover;
-      background-position: center;
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 
-    .overlay-glow {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      background: radial-gradient(circle, rgba(212,175,55,.12) 0%, rgba(0,0,0,0) 70%);
-    }
+<style>
 
-    .logo-wrapper {
-      position: relative;
-      margin-top: -90px;
-      display: flex;
-      justify-content: center;
-      z-index: 5;
-    }
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Cairo',sans-serif;
+scroll-behavior:smooth;
+}
 
-    .logo {
-      width: 180px;
-      height: 180px;
-      border-radius: 50%;
-      border: 5px solid #d4af37;
-      box-shadow: 0 0 35px rgba(212,175,55,.55);
-      object-fit: cover;
-      background: #111;
-    }
+body{
+background:#050505;
+overflow-x:hidden;
+color:white;
+}
 
-    .container {
-      width: 90%;
-      max-width: 500px;
-      margin: auto;
-      text-align: center;
-      padding-bottom: 50px;
-    }
+/* خلفية متحركة */
 
-    h1 {
-      color: #d4af37;
-      font-size: 48px;
-      margin-top: 20px;
-      font-weight: 800;
-      text-shadow: 0 0 20px rgba(212,175,55,.2);
-    }
+body::before{
+content:'';
+position:fixed;
+width:100%;
+height:100%;
+background:
+radial-gradient(circle at top,#d4af3720,transparent 40%),
+radial-gradient(circle at bottom,#d4af3715,transparent 40%);
+z-index:-1;
+animation:bgmove 8s infinite alternate;
+}
 
-    .subtitle {
-      color: #c7b07a;
-      font-size: 24px;
-      margin-top: 10px;
-      margin-bottom: 35px;
-    }
+@keyframes bgmove{
+0%{transform:scale(1);}
+100%{transform:scale(1.08);}
+}
 
-    .line {
-      width: 120px;
-      height: 3px;
-      background: linear-gradient(to right, transparent, #d4af37, transparent);
-      margin: 25px auto;
-      border-radius: 20px;
-    }
+/* البانر */
 
-    .section-title {
-      color: #d4af37;
-      font-size: 38px;
-      font-weight: 800;
-      margin-bottom: 10px;
-    }
+.hero{
+height:450px;
+background:
+linear-gradient(to bottom,rgba(0,0,0,.15),rgba(0,0,0,.96)),
+url('banner.png');
+background-size:cover;
+background-position:center;
+display:flex;
+align-items:center;
+justify-content:center;
+position:relative;
+overflow:hidden;
+}
 
-    .contact-box {
-      background: linear-gradient(145deg, #111, #0a0a0a);
-      border: 1px solid rgba(212,175,55,.18);
-      border-radius: 28px;
-      padding: 30px 22px;
-      margin-top: 30px;
-      box-shadow: 0 0 25px rgba(212,175,55,.08);
-      backdrop-filter: blur(8px);
-    }
+.hero::before{
+content:'';
+position:absolute;
+width:700px;
+height:700px;
+background:radial-gradient(circle,#d4af3722,transparent 70%);
+animation:rotate 14s linear infinite;
+}
 
-    .contact-box h3 {
-      font-size: 30px;
-      margin-bottom: 12px;
-    }
+@keyframes rotate{
+100%{
+transform:rotate(360deg);
+}
+}
 
-    .contact-box p {
-      color: #bdbdbd;
-      margin-bottom: 25px;
-      line-height: 1.8;
-    }
+/* اللوجو */
 
-    .btn {
-      width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      text-decoration: none;
-      color: white;
-      background: linear-gradient(135deg, #1c1c1c, #111);
-      border: 1px solid rgba(212,175,55,.25);
-      padding: 16px;
-      margin-top: 16px;
-      border-radius: 18px;
-      font-size: 18px;
-      font-weight: 700;
-      transition: .3s ease;
-      box-shadow: 0 0 15px rgba(0,0,0,.4);
-    }
+.logo-box{
+display:flex;
+justify-content:center;
+margin-top:-100px;
+position:relative;
+z-index:10;
+animation:fadeUp 1.5s ease;
+}
 
-    .btn:hover {
-      transform: translateY(-4px) scale(1.01);
-      border-color: #d4af37;
-      box-shadow: 0 0 25px rgba(212,175,55,.25);
-      color: #d4af37;
-    }
+.logo{
+width:200px;
+height:200px;
+border-radius:50%;
+border:5px solid #d4af37;
+object-fit:cover;
+background:#111;
+box-shadow:
+0 0 20px rgba(212,175,55,.5),
+0 0 50px rgba(212,175,55,.25);
+transition:.4s;
+}
 
-    .phone {
-      color: #d4af37;
-      font-size: 20px;
-      font-weight: 700;
-      margin-top: 20px;
-    }
+.logo:hover{
+transform:scale(1.05) rotate(2deg);
+}
 
-    footer {
-      text-align: center;
-      padding: 25px 10px 35px;
-      color: #777;
-      font-size: 15px;
-    }
+/* المحتوى */
 
-    @media(max-width: 600px) {
-      .banner {
-        height: 260px;
-      }
+.container{
+width:90%;
+max-width:520px;
+margin:auto;
+text-align:center;
+padding-bottom:60px;
+}
 
-      .logo {
-        width: 145px;
-        height: 145px;
-      }
+.title{
+font-size:58px;
+font-weight:800;
+color:#d4af37;
+margin-top:25px;
+text-shadow:0 0 25px rgba(212,175,55,.3);
+animation:fadeUp 1.6s ease;
+}
 
-      h1 {
-        font-size: 40px;
-      }
+.subtitle{
+font-size:26px;
+color:#d9c48a;
+margin-top:8px;
+animation:fadeUp 1.9s ease;
+}
 
-      .section-title {
-        font-size: 32px;
-      }
-    }
-  </style></head>
-<body>  <div class="banner">
-    <div class="overlay-glow"></div>
-  </div>  <div class="logo-wrapper">
-    <img src="logo.png" alt="دار العطور" class="logo">
-  </div>  <div class="container"><h1>دار العطور</h1>
-<div class="subtitle">حضور لا يُنسى</div>
+.address{
+margin-top:18px;
+font-size:18px;
+line-height:1.9;
+color:#b5b5b5;
+animation:fadeUp 2.2s ease;
+}
+
+.line{
+width:150px;
+height:3px;
+margin:30px auto;
+border-radius:50px;
+background:linear-gradient(to right,transparent,#d4af37,transparent);
+animation:glow 2s infinite;
+}
+
+@keyframes glow{
+50%{
+opacity:.4;
+transform:scaleX(1.15);
+}
+}
+
+.section-title{
+font-size:42px;
+font-weight:800;
+color:#d4af37;
+margin-bottom:15px;
+animation:fadeUp 2.3s ease;
+}
+
+/* الكارد */
+
+.card{
+background:linear-gradient(145deg,#111,#090909);
+border:1px solid rgba(212,175,55,.18);
+border-radius:30px;
+padding:35px 24px;
+backdrop-filter:blur(12px);
+box-shadow:
+0 0 25px rgba(212,175,55,.08),
+0 0 60px rgba(0,0,0,.6);
+animation:fadeUp 2.5s ease;
+}
+
+.card h3{
+font-size:30px;
+margin-bottom:12px;
+}
+
+.card p{
+color:#bdbdbd;
+line-height:2;
+margin-bottom:28px;
+}
+
+/* الأزرار */
+
+.btn{
+width:100%;
+display:flex;
+justify-content:center;
+align-items:center;
+padding:18px;
+margin-top:18px;
+border-radius:20px;
+text-decoration:none;
+font-size:19px;
+font-weight:700;
+color:white;
+background:linear-gradient(135deg,#1b1b1b,#0d0d0d);
+border:1px solid rgba(212,175,55,.18);
+position:relative;
+overflow:hidden;
+transition:.35s;
+box-shadow:0 0 18px rgba(0,0,0,.45);
+}
+
+.btn::before{
+content:'';
+position:absolute;
+width:0%;
+height:100%;
+left:0;
+top:0;
+background:linear-gradient(to right,#d4af37,#f3dd98);
+transition:.4s;
+z-index:0;
+}
+
+.btn span{
+position:relative;
+z-index:1;
+}
+
+.btn:hover::before{
+width:100%;
+}
+
+.btn:hover{
+color:#000;
+transform:translateY(-4px);
+box-shadow:0 0 30px rgba(212,175,55,.28);
+}
+
+/* الرقم */
+
+.phone{
+margin-top:25px;
+font-size:24px;
+font-weight:800;
+color:#d4af37;
+text-shadow:0 0 12px rgba(212,175,55,.35);
+}
+
+/* الفوتر */
+
+footer{
+padding:35px 10px;
+text-align:center;
+font-size:15px;
+color:#777;
+}
+
+/* الأنيميشن */
+
+@keyframes fadeUp{
+from{
+opacity:0;
+transform:translateY(40px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+/* الموبايل */
+
+@media(max-width:600px){
+
+.hero{
+height:340px;
+}
+
+.logo{
+width:165px;
+height:165px;
+}
+
+.title{
+font-size:44px;
+}
+
+.subtitle{
+font-size:22px;
+}
+
+.section-title{
+font-size:34px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- البانر -->
+
+<section class="hero"></section>
+
+<!-- اللوجو -->
+
+<div class="logo-box">
+<img src="logo.png" class="logo">
+</div>
+
+<!-- المحتوى -->
+
+<div class="container">
+
+<div class="title">
+دار العطور
+</div>
+
+<div class="subtitle">
+حضور لا يُنسى
+</div>
+
+<div class="address">
+دمنهور - البحيرة<br>
+عطور وبخور بروائح فاخرة وثبات يدوم طويلًا
+</div>
 
 <div class="line"></div>
 
-<div class="section-title">تواصل معنا</div>
-
-<div class="contact-box">
-  <h3>دار العطور للعطور والبخور</h3>
-  <p>
-    نوفر أفضل العطور والبخور بروائح فخمة وثبات يدوم،
-    بجودة عالية ولمسة راقية تناسب ذوقك.
-  </p>
-
-  <a class="btn" href="https://wa.me/201555264461" target="_blank">
-    واتساب
-  </a>
-
-  <a class="btn" href="tel:01555264461">
-    اتصال مباشر
-  </a>
-
-  <a class="btn" href="https://www.facebook.com/profile.php?id=61590227996097" target="_blank">
-    Facebook
-  </a>
-
-  <a class="btn" href="https://www.instagram.com/dar_el_3otor?igsh=MXVsMmduN29tdDF0YQ==" target="_blank">
-    Instagram
-  </a>
-
-  <a class="btn" href="https://www.tiktok.com/@dar_el_3otor?_r=1&_t=ZS-96WBkOrxhKP" target="_blank">
-    TikTok
-  </a>
-
-  <div class="phone">01555264461</div>
+<div class="section-title">
+تواصل معنا
 </div>
 
-  </div>  <footer>
-    © 2026 دار العطور — جميع الحقوق محفوظة
-  </footer></body>
+<div class="card">
+
+<h3>
+دار العطور للعطور والبخور
+</h3>
+
+<p>
+نوفر أفضل العطور والبخور بروائح راقية
+وثبات ممتاز ولمسة فخامة تناسب ذوقك.
+</p>
+
+<a class="btn" href="https://wa.me/201555264461" target="_blank">
+<span>واتساب</span>
+</a>
+
+<a class="btn" href="tel:01555264461">
+<span>اتصال مباشر</span>
+</a>
+
+<a class="btn" href="https://www.facebook.com/profile.php?id=61590227996097" target="_blank">
+<span>Facebook</span>
+</a>
+
+<a class="btn" href="https://www.instagram.com/dar_el_3otor" target="_blank">
+<span>Instagram</span>
+</a>
+
+<a class="btn" href="https://www.tiktok.com/@dar_el_3otor" target="_blank">
+<span>TikTok</span>
+</a>
+
+<div class="phone">
+01555264461
+</div>
+
+</div>
+
+</div>
+
+<footer>
+© 2026 دار العطور — جميع الحقوق محفوظة
+</footer>
+
+</body>
 </html>
