@@ -2,10 +2,11 @@
 <html lang="ar" dir="rtl">
 
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>دار العطور | Luxury Perfumes</title>
+<title>دار العطور | حضور لا يُنسى</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 
@@ -20,40 +21,38 @@ scroll-behavior:smooth;
 }
 
 body{
-background:#030303;
+background:#020202;
 overflow-x:hidden;
 color:white;
 }
 
-/* خلفية فخمة */
+/* خلفية فخمة متحركة */
 
-.bg-light{
+body::before{
+content:'';
 position:fixed;
 width:100%;
 height:100%;
-z-index:-2;
 background:
-radial-gradient(circle at top left,#d4af3715,transparent 35%),
+radial-gradient(circle at top left,#d4af3715,transparent 30%),
 radial-gradient(circle at bottom right,#d4af3710,transparent 35%),
-#030303;
-animation:bgmove 10s infinite alternate;
+#020202;
+z-index:-5;
+animation:bg 10s infinite alternate ease-in-out;
 }
 
-@keyframes bgmove{
-0%{
-transform:scale(1);
-}
+@keyframes bg{
 100%{
 transform:scale(1.08);
 }
 }
 
-/* البانر */
+/* الهيرو */
 
 .hero{
 height:100vh;
 background:
-linear-gradient(to bottom,rgba(0,0,0,.35),rgba(0,0,0,.92)),
+linear-gradient(to bottom,rgba(0,0,0,.2),rgba(0,0,0,.95)),
 url('banner.png');
 background-size:cover;
 background-position:center;
@@ -64,51 +63,68 @@ align-items:center;
 overflow:hidden;
 }
 
-/* دوائر متحركة */
+/* إضاءة */
 
-.circle{
+.glow{
 position:absolute;
-border-radius:50%;
-background:rgba(212,175,55,.08);
+width:700px;
+height:700px;
+background:radial-gradient(circle,#d4af3725,transparent 70%);
 filter:blur(10px);
-animation:float 8s infinite ease-in-out;
+animation:rotate 15s linear infinite;
 }
 
-.circle1{
-width:220px;
-height:220px;
-top:10%;
-left:10%;
+@keyframes rotate{
+100%{
+transform:rotate(360deg);
+}
 }
 
-.circle2{
-width:160px;
-height:160px;
-bottom:12%;
-right:8%;
+/* Particles */
+
+.particle{
+position:absolute;
+background:#d4af37;
+border-radius:50%;
+opacity:.18;
+animation:float 6s infinite ease-in-out;
+}
+
+.p1{
+width:8px;
+height:8px;
+top:20%;
+left:15%;
+}
+
+.p2{
+width:12px;
+height:12px;
+bottom:18%;
+right:12%;
 animation-delay:2s;
 }
 
-.circle3{
-width:120px;
-height:120px;
-top:45%;
-right:18%;
+.p3{
+width:6px;
+height:6px;
+top:55%;
+right:20%;
 animation-delay:4s;
 }
 
 @keyframes float{
 50%{
-transform:translateY(-20px) scale(1.08);
+transform:translateY(-25px);
 }
 }
 
 /* المحتوى */
 
-.hero-content{
-text-align:center;
+.content{
 position:relative;
-z-index:5;
+z-index:10;
+text-align:center;
 padding:20px;
 animation:fadeUp 1.5s ease;
 }
@@ -116,76 +132,112 @@ animation:fadeUp 1.5s ease;
 /* اللوجو */
 
 .logo{
-width:210px;
-height:210px;
+width:220px;
+height:220px;
 border-radius:50%;
 border:5px solid #d4af37;
 object-fit:cover;
 box-shadow:
-0 0 25px rgba(212,175,55,.45),
-0 0 60px rgba(212,175,55,.2);
+0 0 30px rgba(212,175,55,.55),
+0 0 80px rgba(212,175,55,.22);
+transition:.5s;
 animation:logoGlow 3s infinite alternate;
+}
+
+.logo:hover{
+transform:scale(1.05);
 }
 
 @keyframes logoGlow{
 100%{
 box-shadow:
-0 0 35px rgba(212,175,55,.7),
-0 0 80px rgba(212,175,55,.35);
+0 0 45px rgba(212,175,55,.8),
+0 0 100px rgba(212,175,55,.4);
 }
 }
 
-/* النص */
+/* النصوص */
 
-.title{
-font-size:70px;
+.brand{
+font-size:78px;
 font-weight:800;
 margin-top:28px;
 color:#d4af37;
-text-shadow:0 0 30px rgba(212,175,55,.35);
-}
-
-.subtitle{
-font-size:28px;
-margin-top:10px;
-color:#f1ddb1;
+text-shadow:0 0 35px rgba(212,175,55,.35);
 letter-spacing:2px;
 }
 
+.slogan{
+font-size:30px;
+margin-top:10px;
+color:#f3dfaa;
+font-weight:600;
+letter-spacing:3px;
+}
+
 .desc{
-margin-top:22px;
+margin:25px auto 0;
+max-width:700px;
+line-height:2.2;
 font-size:18px;
-color:#c5c5c5;
+color:#d0d0d0;
+}
+
+/* العنوان */
+
+.address{
+margin-top:18px;
+font-size:18px;
+color:#b7b7b7;
 line-height:2;
-max-width:650px;
+}
+
+/* خط ذهبي */
+
+.line{
+width:180px;
+height:3px;
+background:linear-gradient(to right,transparent,#d4af37,transparent);
+margin:35px auto;
+border-radius:30px;
+animation:lineGlow 2s infinite;
+}
+
+@keyframes lineGlow{
+50%{
+opacity:.5;
+transform:scaleX(1.15);
+}
 }
 
 /* الأزرار */
 
 .buttons{
-margin-top:35px;
 display:flex;
 flex-direction:column;
-gap:18px;
 align-items:center;
+gap:18px;
+margin-top:25px;
 }
 
 .btn{
-width:320px;
-max-width:90%;
-padding:18px;
-border-radius:18px;
+width:340px;
+max-width:92%;
+padding:19px;
+border-radius:20px;
 text-decoration:none;
 font-size:19px;
 font-weight:700;
+color:white;
+background:rgba(15,15,15,.88);
+border:1px solid rgba(212,175,55,.22);
+backdrop-filter:blur(12px);
 position:relative;
 overflow:hidden;
-color:white;
-background:linear-gradient(135deg,#161616,#0a0a0a);
-border:1px solid rgba(212,175,55,.25);
 transition:.4s;
-backdrop-filter:blur(10px);
-box-shadow:0 0 18px rgba(0,0,0,.5);
+box-shadow:
+0 0 18px rgba(0,0,0,.55),
+0 0 20px rgba(212,175,55,.05);
 }
 
 .btn::before{
@@ -195,8 +247,8 @@ top:0;
 left:-100%;
 width:100%;
 height:100%;
-background:linear-gradient(90deg,transparent,rgba(255,255,255,.15),transparent);
-transition:.6s;
+background:linear-gradient(90deg,transparent,rgba(255,255,255,.18),transparent);
+transition:.7s;
 }
 
 .btn:hover::before{
@@ -204,23 +256,25 @@ left:100%;
 }
 
 .btn:hover{
-transform:translateY(-5px) scale(1.02);
+transform:translateY(-6px) scale(1.02);
 border-color:#d4af37;
-box-shadow:0 0 30px rgba(212,175,55,.28);
+box-shadow:
+0 0 30px rgba(212,175,55,.25),
+0 0 60px rgba(212,175,55,.12);
 color:#d4af37;
 }
 
-/* رقم التواصل */
+/* رقم */
 
 .phone{
-margin-top:30px;
-font-size:24px;
+margin-top:32px;
+font-size:26px;
 font-weight:800;
 color:#d4af37;
-text-shadow:0 0 18px rgba(212,175,55,.3);
+text-shadow:0 0 18px rgba(212,175,55,.4);
 }
 
-/* الفوتر */
+/* فوتر */
 
 footer{
 padding:30px 15px;
@@ -228,9 +282,10 @@ text-align:center;
 font-size:15px;
 color:#777;
 background:#050505;
+border-top:1px solid rgba(212,175,55,.08);
 }
 
-/* انيميشن */
+/* دخول */
 
 @keyframes fadeUp{
 from{
@@ -253,53 +308,66 @@ padding:90px 0;
 }
 
 .logo{
-width:165px;
-height:165px;
+width:170px;
+height:170px;
 }
 
-.title{
+.brand{
 font-size:48px;
 }
 
-.subtitle{
+.slogan{
 font-size:22px;
 }
 
 .desc{
+font-size:16px;
+line-height:2;
+}
+
+.address{
 font-size:16px;
 }
 
 }
 
 </style>
+
 </head>
 
 <body>
 
-<div class="bg-light"></div>
-
 <section class="hero">
 
-<div class="circle circle1"></div>
-<div class="circle circle2"></div>
-<div class="circle circle3"></div>
+<div class="glow"></div>
 
-<div class="hero-content">
+<div class="particle p1"></div>
+<div class="particle p2"></div>
+<div class="particle p3"></div>
+
+<div class="content">
 
 <img src="logo.png" class="logo">
 
-<div class="title">
+<div class="brand">
 دار العطور
 </div>
 
-<div class="subtitle">
-Luxury Perfumes & Bakhoor
+<div class="slogan">
+حضور لا يُنسى
 </div>
 
 <div class="desc">
-عطور وبخور بروائح فاخرة وثبات يدوم طويلًا،
-لمسة فخامة وأناقة تناسب ذوقك وتخلي حضورك لا يُنسى.
+تجربة فاخرة من العطور والبخور بروائح راقية وثبات يدوم،
+مصممة لتمنحك حضورًا أنيقًا ولمسة تميز لا تُنسى.
 </div>
+
+<div class="address">
+دمنهور - البحيرة<br>
+Dar El Otor Luxury Perfumes
+</div>
+
+<div class="line"></div>
 
 <div class="buttons">
 
@@ -338,4 +406,5 @@ TikTok
 </footer>
 
 </body>
+
 </html>
